@@ -260,21 +260,21 @@ export default function HashGeneratorPage() {
   );
 
   return (
-    <div className="p-8 max-w-6xl mx-auto">
+    <div className="p-4 md:p-6 lg:p-8 max-w-6xl mx-auto">
       {/* Header */}
-      <header className="mb-8">
-        <div className="flex items-center gap-4 mb-2">
-          <div className="w-12 h-12 bg-brutal-danger border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
-            <Shield className="w-6 h-6 text-white" />
+      <header className="mb-6 md:mb-8">
+        <div className="flex items-center gap-3 md:gap-4 mb-2">
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-brutal-danger border-[2px] md:border-[3px] border-black shadow-[2px_2px_0px_0px_#000000] md:shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
+            <Shield className="w-5 h-5 md:w-6 md:h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-black uppercase tracking-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-black uppercase tracking-tight">
               Hash Generator
             </h1>
-            <div className="h-1 w-24 bg-brutal-danger mt-1" />
+            <div className="h-1 w-16 md:w-24 bg-brutal-danger mt-1" />
           </div>
         </div>
-        <p className="text-brutal-text-muted mt-4 font-medium">
+        <p className="text-brutal-text-muted mt-3 md:mt-4 font-medium text-sm md:text-base">
           텍스트 또는 파일의 해시값을 생성합니다. MD5, SHA-1, SHA-256, SHA-384, SHA-512 지원.
         </p>
       </header>

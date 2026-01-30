@@ -23,21 +23,21 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
+    <div className="p-4 md:p-6 lg:p-8 max-w-4xl mx-auto">
       {/* Header */}
-      <header className="mb-8">
-        <div className="flex items-center gap-4 mb-2">
-          <div className="w-12 h-12 bg-brutal-secondary border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
-            <Settings className="w-6 h-6 text-black" />
+      <header className="mb-6 md:mb-8">
+        <div className="flex items-center gap-3 md:gap-4 mb-2">
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-brutal-secondary border-[2px] md:border-[3px] border-black shadow-[2px_2px_0px_0px_#000000] md:shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
+            <Settings className="w-5 h-5 md:w-6 md:h-6 text-black" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-black uppercase tracking-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-black uppercase tracking-tight">
               Settings
             </h1>
-            <div className="h-1 w-20 bg-brutal-secondary mt-1" />
+            <div className="h-1 w-16 md:w-20 bg-brutal-secondary mt-1" />
           </div>
         </div>
-        <p className="text-brutal-text-muted mt-4 font-medium">
+        <p className="text-brutal-text-muted mt-3 md:mt-4 font-medium text-sm md:text-base">
           애플리케이션 설정을 관리합니다.
         </p>
       </header>
@@ -63,14 +63,14 @@ export default function SettingsPage() {
               <label className="block text-sm font-bold uppercase tracking-wide text-black mb-2">
                 ANTHROPIC_API_KEY
               </label>
-              <div className="flex gap-3 items-stretch">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-stretch">
                 <Input
                   type="password"
                   placeholder="서버 환경 변수로 설정됨"
                   disabled
                   className="flex-1 opacity-60"
                 />
-                <Badge variant="success" className="h-11 px-4">
+                <Badge variant="success" className="h-11 px-4 flex items-center justify-center">
                   환경 변수
                 </Badge>
               </div>
@@ -83,14 +83,14 @@ export default function SettingsPage() {
               <label className="block text-sm font-bold uppercase tracking-wide text-black mb-2">
                 GOOGLE_API_KEY
               </label>
-              <div className="flex gap-3 items-stretch">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-stretch">
                 <Input
                   type="password"
                   placeholder="서버 환경 변수로 설정됨"
                   disabled
                   className="flex-1 opacity-60"
                 />
-                <Badge variant="success" className="h-11 px-4">
+                <Badge variant="success" className="h-11 px-4 flex items-center justify-center">
                   환경 변수
                 </Badge>
               </div>

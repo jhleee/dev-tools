@@ -191,21 +191,21 @@ export default function RegexTesterPage() {
   }, [pattern, flags]);
 
   return (
-    <div className="p-8 max-w-6xl mx-auto">
+    <div className="p-4 md:p-6 lg:p-8 max-w-6xl mx-auto">
       {/* Header */}
-      <header className="mb-8">
-        <div className="flex items-center gap-4 mb-2">
-          <div className="w-12 h-12 bg-brutal-secondary border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
-            <Regex className="w-6 h-6 text-black" />
+      <header className="mb-6 md:mb-8">
+        <div className="flex items-center gap-3 md:gap-4 mb-2">
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-brutal-secondary border-[2px] md:border-[3px] border-black shadow-[2px_2px_0px_0px_#000000] md:shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
+            <Regex className="w-5 h-5 md:w-6 md:h-6 text-black" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-black uppercase tracking-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-black uppercase tracking-tight">
               Regex Tester
             </h1>
-            <div className="h-1 w-24 bg-brutal-secondary mt-1" />
+            <div className="h-1 w-16 md:w-24 bg-brutal-secondary mt-1" />
           </div>
         </div>
-        <p className="text-brutal-text-muted mt-4 font-medium">
+        <p className="text-brutal-text-muted mt-3 md:mt-4 font-medium text-sm md:text-base">
           정규식 패턴을 테스트하고 매칭 결과를 실시간으로 확인합니다. 그룹 캡처 지원.
         </p>
       </header>

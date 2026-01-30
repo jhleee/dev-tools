@@ -239,21 +239,21 @@ export default function DiffViewerPage() {
   }, []);
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-6 lg:p-8 max-w-7xl mx-auto">
       {/* Header */}
-      <header className="mb-8">
-        <div className="flex items-center gap-4 mb-2">
-          <div className="w-12 h-12 bg-brutal-accent border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
-            <GitCompare className="w-6 h-6 text-black" />
+      <header className="mb-6 md:mb-8">
+        <div className="flex items-center gap-3 md:gap-4 mb-2">
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-brutal-accent border-[2px] md:border-[3px] border-black shadow-[2px_2px_0px_0px_#000000] md:shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
+            <GitCompare className="w-5 h-5 md:w-6 md:h-6 text-black" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-black uppercase tracking-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-black uppercase tracking-tight">
               Diff Viewer
             </h1>
-            <div className="h-1 w-24 bg-brutal-accent mt-1" />
+            <div className="h-1 w-16 md:w-24 bg-brutal-accent mt-1" />
           </div>
         </div>
-        <p className="text-brutal-text-muted mt-4 font-medium">
+        <p className="text-brutal-text-muted mt-3 md:mt-4 font-medium text-sm md:text-base">
           두 텍스트를 비교하고 변경 사항을 하이라이트합니다.
         </p>
       </header>
@@ -295,7 +295,7 @@ export default function DiffViewerPage() {
       </div>
 
       {/* Input Area */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-6">
         <Card>
           <CardHeader className="border-b-[3px] border-black bg-brutal-danger">
             <CardTitle className="text-sm text-white flex items-center gap-2">

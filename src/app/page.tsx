@@ -250,21 +250,21 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="p-8 max-w-6xl mx-auto">
+    <div className="p-4 md:p-6 lg:p-8 max-w-6xl mx-auto">
       {/* Header */}
-      <header className="mb-12">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-14 h-14 bg-brutal-primary border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
-            <Zap className="w-8 h-8 text-black" />
+      <header className="mb-8 md:mb-12">
+        <div className="flex items-center gap-3 md:gap-4 mb-4">
+          <div className="w-10 h-10 md:w-14 md:h-14 bg-brutal-primary border-[2px] md:border-[3px] border-black shadow-[2px_2px_0px_0px_#000000] md:shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
+            <Zap className="w-5 h-5 md:w-8 md:h-8 text-black" />
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-black uppercase tracking-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black uppercase tracking-tight">
               DevTools Backoffice
             </h1>
-            <div className="h-1 w-32 bg-brutal-primary mt-2" />
+            <div className="h-1 w-24 md:w-32 bg-brutal-primary mt-2" />
           </div>
         </div>
-        <p className="text-brutal-text-muted text-lg max-w-2xl font-medium mt-4">
+        <p className="text-brutal-text-muted text-base md:text-lg max-w-2xl font-medium mt-4">
           팀 내부에서 사용하는 개발자 도구 모음입니다. 생산성을 높이고 반복
           작업을 자동화하세요.
         </p>
@@ -272,10 +272,10 @@ export default function Home() {
 
       {/* Tools Grid */}
       <section>
-        <h2 className="text-sm font-bold text-black uppercase tracking-wider mb-6 border-b-[3px] border-black pb-2 inline-block">
+        <h2 className="text-xs md:text-sm font-bold text-black uppercase tracking-wider mb-4 md:mb-6 border-b-[2px] md:border-b-[3px] border-black pb-2 inline-block">
           Available Tools
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-4">
           {tools.map((tool) => {
             const Icon = tool.icon;
             const isActive = tool.status === "active";
@@ -288,12 +288,12 @@ export default function Home() {
                     : "opacity-60 cursor-not-allowed"
                 }`}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex items-start justify-between mb-3 md:mb-4">
                     <div
-                      className={`w-12 h-12 ${tool.color} border-[2px] border-black shadow-[2px_2px_0px_0px_#000000] flex items-center justify-center`}
+                      className={`w-10 h-10 md:w-12 md:h-12 ${tool.color} border-[2px] border-black shadow-[2px_2px_0px_0px_#000000] flex items-center justify-center`}
                     >
-                      <Icon className="w-6 h-6 text-black" />
+                      <Icon className="w-5 h-5 md:w-6 md:h-6 text-black" />
                     </div>
                     {isActive ? (
                       <ArrowRight className="w-6 h-6 text-brutal-text-muted group-hover:text-black group-hover:translate-x-1 transition-all" />
@@ -332,27 +332,27 @@ export default function Home() {
       </section>
 
       {/* Quick Stats */}
-      <section className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="mt-8 md:mt-12 grid grid-cols-3 gap-3 md:gap-6">
         <Card className="bg-brutal-primary">
-          <CardContent className="p-6 text-center">
-            <div className="text-5xl font-bold text-black mb-2">21</div>
-            <div className="text-black font-bold uppercase tracking-wide text-sm">
+          <CardContent className="p-3 md:p-6 text-center">
+            <div className="text-2xl md:text-5xl font-bold text-black mb-1 md:mb-2">21</div>
+            <div className="text-black font-bold uppercase tracking-wide text-[10px] md:text-sm">
               Active Tools
             </div>
           </CardContent>
         </Card>
         <Card className="bg-brutal-secondary">
-          <CardContent className="p-6 text-center">
-            <div className="text-5xl font-bold text-black mb-2">1</div>
-            <div className="text-black font-bold uppercase tracking-wide text-sm">
+          <CardContent className="p-3 md:p-6 text-center">
+            <div className="text-2xl md:text-5xl font-bold text-black mb-1 md:mb-2">1</div>
+            <div className="text-black font-bold uppercase tracking-wide text-[10px] md:text-sm">
               Coming Soon
             </div>
           </CardContent>
         </Card>
         <Card className="bg-brutal-accent">
-          <CardContent className="p-6 text-center">
-            <div className="text-5xl font-bold text-black mb-2">v1.0</div>
-            <div className="text-black font-bold uppercase tracking-wide text-sm">
+          <CardContent className="p-3 md:p-6 text-center">
+            <div className="text-2xl md:text-5xl font-bold text-black mb-1 md:mb-2">v1.0</div>
+            <div className="text-black font-bold uppercase tracking-wide text-[10px] md:text-sm">
               Version
             </div>
           </CardContent>
@@ -360,18 +360,18 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="mt-12">
+      <section className="mt-8 md:mt-12">
         <Card className="bg-black text-white border-black">
-          <CardContent className="p-8 flex items-center justify-between">
+          <CardContent className="p-4 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
-              <h3 className="text-xl font-bold uppercase tracking-tight text-brutal-primary mb-2">
+              <h3 className="text-base md:text-xl font-bold uppercase tracking-tight text-brutal-primary mb-1 md:mb-2">
                 새로운 도구가 필요하신가요?
               </h3>
-              <p className="text-brutal-text-light-muted">
+              <p className="text-brutal-text-light-muted text-sm md:text-base">
                 팀에 필요한 도구를 제안해주세요. 함께 만들어갑니다.
               </p>
             </div>
-            <Button variant="default" size="lg">
+            <Button variant="default" size="lg" className="w-full md:w-auto">
               Request Tool
             </Button>
           </CardContent>

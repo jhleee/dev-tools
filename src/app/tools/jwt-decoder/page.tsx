@@ -194,26 +194,26 @@ export default function JWTDecoderPage() {
   const sampleJWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjE5MTYyMzkwMjJ9.4S-LxK3K8A3lrv1PNRZT9FVf6bQJ_Xk5N5R8hYQO_Ak";
 
   return (
-    <div className="p-8 max-w-6xl mx-auto">
+    <div className="p-4 md:p-6 lg:p-8 max-w-6xl mx-auto">
       {/* Header */}
-      <header className="mb-8">
-        <div className="flex items-center gap-4 mb-2">
-          <div className="w-12 h-12 bg-brutal-warning border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
-            <KeyRound className="w-6 h-6 text-black" />
+      <header className="mb-6 md:mb-8">
+        <div className="flex items-center gap-3 md:gap-4 mb-2">
+          <div className="w-10 h-10 md:w-12 md:h-12 bg-brutal-warning border-[2px] md:border-[3px] border-black shadow-[2px_2px_0px_0px_#000000] md:shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center">
+            <KeyRound className="w-5 h-5 md:w-6 md:h-6 text-black" />
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-black uppercase tracking-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-black uppercase tracking-tight">
               JWT Decoder
             </h1>
-            <div className="h-1 w-24 bg-brutal-warning mt-1" />
+            <div className="h-1 w-16 md:w-24 bg-brutal-warning mt-1" />
           </div>
         </div>
-        <p className="text-brutal-text-muted mt-4 font-medium">
+        <p className="text-brutal-text-muted mt-3 md:mt-4 font-medium text-sm md:text-base">
           JWT 토큰을 파싱하여 Header, Payload, Signature를 확인합니다. 만료 시간 자동 체크.
         </p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {/* Input Section */}
         <div className="space-y-4">
           <Card>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import {
   Hash,
   Home,
@@ -28,6 +29,8 @@ import {
   Key,
   BarChart3,
   Database,
+  Menu,
+  X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -152,9 +155,50 @@ const navigation = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
+  // 페이지 이동 시 모바일 메뉴 닫기
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  // ESC 키로 메뉴 닫기
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
 
   return (
-    <aside className="fixed left-0 top-0 w-64 h-screen bg-white border-r-[4px] border-black flex flex-col">
+    <>
+      {/* 모바일 해버거 버튼 */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed top-4 left-4 z-50 md:hidden w-12 h-12 bg-brutal-primary border-[3px] border-black shadow-brutal flex items-center justify-center hover:shadow-brutal-lg transition-shadow"
+        aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
+      >
+        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+
+      {/* 모바일 오버레이 */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* 사이드바 */}
+      <aside
+        className={cn(
+          "fixed left-0 top-0 w-64 h-screen bg-white border-r-[4px] border-black flex flex-col z-40",
+          "transition-transform duration-200 ease-in-out",
+          "md:translate-x-0",
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+      >
       {/* Logo */}
       <div className="p-6 border-b-[4px] border-black bg-brutal-primary">
         <Link href="/" className="flex items-center gap-3 group">
@@ -246,5 +290,6 @@ export function Sidebar() {
         </div>
       </div>
     </aside>
+    </>
   );
 }
