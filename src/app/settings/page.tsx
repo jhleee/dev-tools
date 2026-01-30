@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Settings, Key, Save, Check } from "lucide-react";
+import { Settings, Key, Save, Check, Palette } from "lucide-react";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import {
   Button,
   Card,
@@ -116,20 +117,20 @@ GOOGLE_API_KEY=AIza...`}
       {/* Appearance Section */}
       <Card className="mb-6">
         <CardHeader>
-          <CardTitle className="text-lg">Appearance</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div>
-            <label className="block text-sm font-bold uppercase tracking-wide text-black mb-2">
-              Theme
-            </label>
-            <select className="w-full h-11 px-4 bg-white text-black font-bold border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] focus:outline-none focus:shadow-[6px_6px_0px_0px_#000000] focus:-translate-x-0.5 focus:-translate-y-0.5 transition-all duration-100 cursor-pointer">
-              <option value="light">Light (Neo-Brutalism)</option>
-              <option value="dark" disabled>
-                Dark (Coming Soon)
-              </option>
-            </select>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-brutal-accent border-[2px] border-black shadow-[2px_2px_0px_0px_#000000] flex items-center justify-center">
+              <Palette className="w-4 h-4 text-black" />
+            </div>
+            <div>
+              <CardTitle className="text-lg">Appearance</CardTitle>
+              <CardDescription className="mt-1">
+                테마 색상을 선택합니다.
+              </CardDescription>
+            </div>
           </div>
+        </CardHeader>
+        <CardContent>
+          <ThemeSwitcher />
         </CardContent>
       </Card>
 

@@ -29,7 +29,6 @@ import {
   BarChart3,
   Database,
 } from "lucide-react";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { cn } from "@/lib/utils";
 
 const navigation = [
@@ -242,12 +241,7 @@ export function Sidebar() {
           Settings
         </Link>
 
-        {/* Theme Switcher */}
-        <div className="mt-4">
-          <ThemeSwitcher />
-        </div>
-
-        <div className="px-3 text-xs text-brutal-text-muted font-bold uppercase">
+        <div className="mt-4 px-3 text-xs text-brutal-text-muted font-bold uppercase">
           v1.0.0
         </div>
       </div>
