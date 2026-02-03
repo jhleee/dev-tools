@@ -31,6 +31,14 @@ export const TIKTOKEN_ENCODINGS: Array<{
   { encoding: "r50k_base", model: "GPT-3" },
 ];
 
+// Claude models for token counting
+export const CLAUDE_MODELS = [
+  { model: "claude-sonnet-4-20250514", displayName: "Claude Sonnet 4" },
+  { model: "claude-sonnet-4-5", displayName: "Claude Sonnet 4.5" },
+  { model: "claude-haiku-4-5", displayName: "Claude Haiku 4.5" },
+  { model: "claude-opus-4-5", displayName: "Claude Opus 4.5" },
+];
+
 export function getFileStats(text: string): FileStats {
   return {
     charCount: text.length,
@@ -58,27 +66,33 @@ export function getTiktokenStats(
 
 export async function getClaudeTokens(
   text: string,
+  model: string,
   apiKey?: string
-): Promise<TokenStats | null> {
+): Promise<{ stats: TokenStats | null; error?: string }> {
   const key = apiKey || process.env.ANTHROPIC_API_KEY;
-  if (!key) return null;
+  if (!key) return { stats: null, error: "ANTHROPIC_API_KEY not set" };
 
   try {
     const Anthropic = (await import("@anthropic-ai/sdk")).default;
     const client = new Anthropic({ apiKey: key });
 
     const result = await client.messages.countTokens({
-      model: "claude-sonnet-4-20250514",
+      model,
       messages: [{ role: "user", content: text }],
     });
 
     return {
-      totalTokens: result.input_tokens,
-      charsPerToken:
-        result.input_tokens > 0 ? text.length / result.input_tokens : 0,
+      stats: {
+        totalTokens: result.input_tokens,
+        charsPerToken:
+          result.input_tokens > 0 ? text.length / result.input_tokens : 0,
+      },
     };
-  } catch {
-    return null;
+  } catch (error) {
+    return {
+      stats: null,
+      error: error instanceof Error ? error.message : "Unknown error",
+    };
   }
 }
 
@@ -140,14 +154,23 @@ export async function analyzeTokens(
     }
   }
 
-  // Claude
-  const claudeStats = await getClaudeTokens(text, options.anthropicApiKey);
-  results.push({
-    provider: "Anthropic",
-    model: "Claude (claude-sonnet-4)",
-    stats: claudeStats,
-    error: claudeStats ? undefined : "ANTHROPIC_API_KEY not set",
-  });
+  // Claude models
+  const claudeResults = await Promise.all(
+    CLAUDE_MODELS.map(async ({ model, displayName }) => {
+      const { stats, error } = await getClaudeTokens(
+        text,
+        model,
+        options.anthropicApiKey
+      );
+      return {
+        provider: "Anthropic",
+        model: displayName,
+        stats,
+        error,
+      } satisfies TokenizerResult;
+    })
+  );
+  results.push(...claudeResults);
 
   // Gemini
   const geminiStats = await getGeminiTokens(text, options.googleApiKey);
